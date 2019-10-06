@@ -4,9 +4,9 @@ export default {
   // TODO hit api to get list of books
   // TODO concat authors into a string before sending off.
 
-  getGoogleBooks: function(language) {
+  getGoogleBooks: function(searchTerm) {
     return new Promise((resolve, reject) => {
-      const searchTerm = "searchterm";
+      // const searchTerm = "Flowers";
       axios
         .get(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}`)
         .then(res => {
