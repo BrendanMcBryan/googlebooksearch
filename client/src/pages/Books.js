@@ -15,15 +15,17 @@ class Books extends Component {
   // Add code here to get all books from the database and save them to this.state.books
   componentDidMount() {
     this.getbooks();
+    this.getGoogleBooks();
   }
 
   getbooks = () => {
     API.getBooks().then(data => this.setState({ books: data.data }));
   };
 
+  getGoogleBooks = () => {
+    API.getGoogleBooks().then(data => console.log(data));
+  };
 
-
-  
   render() {
     return (
       <Container fluid>
