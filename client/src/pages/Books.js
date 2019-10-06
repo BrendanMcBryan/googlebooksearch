@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
 import DeleteBtn from "../components/DeleteBtn";
+import SearchBtn from "../components/SearchBtn";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
@@ -14,16 +15,19 @@ class Books extends Component {
 
   // Add code here to get all books from the database and save them to this.state.books
   componentDidMount() {
-    this.getbooks();
+    // this.getbooks();
+    this.getGoogleBooks();
   }
 
   getbooks = () => {
     API.getBooks().then(data => this.setState({ books: data.data }));
   };
 
+  getGoogleBooks = () => {
+    API.getGoogleBooks().then(data => this.setState({ books: data }));
+  };
+  r5;
 
-
-  
   render() {
     return (
       <Container fluid>
@@ -36,7 +40,8 @@ class Books extends Component {
               <Input name="title" placeholder="Title (required)" />
               <Input name="author" placeholder="Author (required)" />
               <TextArea name="synopsis" placeholder="Synopsis (Optional)" />
-              <FormBtn>Submit Book</FormBtn>
+              <FormBtn>Find Books!</FormBtn>
+            
             </form>
           </Col>
           <Col size="md-6 sm-12">

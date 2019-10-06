@@ -12,5 +12,5 @@ export function List({ children }) {
 }
 
 export function ListItem({ children }) {
-  return <li className="list-group-item">{children}</li>;
+  return <div className="media">{children}</div>;
 }
