@@ -33,7 +33,9 @@ class Search extends Component {
 
   handleFind = event => {
     event.preventDefault();
-    API.getGoogleBooks(this.state.bookSearch).then(data => this.setState({ books: data })).catch(err => console.log(err));
+    API.getGoogleBooks(this.state.bookSearch)
+      .then(data => this.setState({ books: data }))
+      .catch(err => console.log(err));
 
     // const term = event.target.Search.value;
     // console.log(term);
