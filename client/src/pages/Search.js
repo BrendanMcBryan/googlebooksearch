@@ -12,13 +12,13 @@ class Search extends Component {
   // Initialize this.state.books as an empty array
   state = {
     books: [],
-    bookSearch: "Dummy Search Term"
+    bookSearch: ""
   };
 
   // Add code here to get all books from the database and save them to this.state.books
   componentDidMount() {
     // this.getbooks();
-    this.getGoogleBooks();
+    // this.getGoogleBooks();
   }
 
   getbooks = () => {
@@ -71,22 +71,23 @@ class Search extends Component {
               </form>
             </Jumbotron>
             <Col size="md-12 ">
-              <h1>Books found for {this.state.bookSearch}</h1>
+              <h2>Books found for {this.state.bookSearch}</h2>
               {this.state.books.length ? (
                 <List>
                   {this.state.books.map(book => (
-                    <ListItem key={book._id}>
-                      <a href={"/books/" + book._id}>
-                        <strong>
-                          {book.title} by {book.author}
-                        </strong>
-                      </a>
+                    <ListItem
+                      key={book._id}
+                      image={book.image}
+                      title={book.title}
+                      author={book.author}
+                      synopsis={book.synopsis}
+                    >
                       <DeleteBtn />
                     </ListItem>
                   ))}
                 </List>
               ) : (
-                <h3>No Results to Display</h3>
+                <h5>No Results to Display</h5>
               )}
             </Col>
           </Col>
