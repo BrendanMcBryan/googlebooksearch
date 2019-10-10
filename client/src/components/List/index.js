@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import AddButton from "../AddButton";
 
 // This file exports both the List and ListItem components
 
@@ -30,15 +31,19 @@ export function ListItem(props) {
             type="button"
             name="link"
             data-link={props.link}
-            onClick="window.location.href = '{props.link}';"
             className="btn btn-link bg-light bookLinkBtn"
           >
-            Book Link
-          </button>
 
-          <button type="button" className="btn btn-dark saveBookBtn">
-            Save Book
+            <a target="_blank" href={props.link}>
+              Book Link
+            </a>
           </button>
+        
+
+
+          <AddButton type="button" className="btn btn-dark saveBookBtn" {... props} onClick={() => props.handleAddtoSaved(props)}>
+            Save Book
+          </AddButton>
         </div>
       </div>
     </li>

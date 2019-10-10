@@ -1,9 +1,8 @@
 import axios from "axios";
 
 export default {
-  // TODO hit api to get list of books
   // TODO concat authors into a string before sending off.
-
+  // TODO send this off to the router to make this google books call
   getGoogleBooks: function(searchTerm) {
     return new Promise((resolve, reject) => {
       // const searchTerm = "Flowers";
@@ -16,7 +15,8 @@ export default {
               title: book.volumeInfo.title,
               author: book.volumeInfo.authors,
               synopsis: book.volumeInfo.description,
-              image: book.volumeInfo.imageLinks.thumbnail
+              image: book.volumeInfo.imageLinks.thumbnail,
+              link:book.volumeInfo.infoLink
             };
           });
           resolve(results);

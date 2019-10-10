@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Jumbotron from "../components/Jumbotron";
-import DeleteBtn from "../components/DeleteBtn";
+import AddButton from "../components/AddButton";
 import SearchBtn from "../components/SearchBtn";
 
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input } from "../components/Form";
 import API from "../utils/API";
 
 class Search extends Component {
@@ -25,9 +25,16 @@ class Search extends Component {
     API.getBooks().then(data => this.setState({ books: data.data }));
   };
 
+  handleAddtoSaved = id => {
+    API.saveBook(id).then(console.log("Boook added written to the DB"));
+  };
+
+  // ? is this needed
   getGoogleBooks = searchTerm => {
     // this.setState({ searchTerm: searchTerm});
-    API.getGoogleBooks(searchTerm).then(data => this.setState({ books: data }));
+    API.getGoogleBooks(searchTerm)
+      .then(data => this.setState({ books: data }))
+      .catch(err => console.log(err));
     // .then(console.log(searchTerm));
   };
 
@@ -77,13 +84,14 @@ class Search extends Component {
                   {this.state.books.map(book => (
                     <ListItem
                       key={book._id}
+                      id={book._id}
                       image={book.image}
                       title={book.title}
                       author={book.author}
                       synopsis={book.synopsis}
-                    >
-                      <DeleteBtn />
-                    </ListItem>
+                      link={book.link}
+                      handleAddtoSaved={this.handleAddtoSaved}
+                    ></ListItem>
                   ))}
                 </List>
               ) : (
