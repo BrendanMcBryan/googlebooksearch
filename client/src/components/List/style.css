@@ -30,29 +30,3 @@ ul {
   margin: 0;
   padding: 0;
 }
-/* 
-.list-overflow-container ul {
-  margin: 0;
-}
-
-.list-overflow-container li {
-  border-radius: 0px;
-  border-left: none;
-  border-right: none;
-}
-
-.list-overflow-container li * {
-  cursor: pointer;
-}
-
-.list-overflow-container li a {
-  color: #2A878C;
-}
-
-.list-overflow-container li:first-child {
-  border-top: none;
-}
-
-.list-overflow-container li:last-child {
-  border-bottom: none;
-} */

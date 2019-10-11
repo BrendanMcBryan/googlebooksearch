@@ -41,9 +41,11 @@ export function ListItem(props) {
         
 
 
-          <AddButton type="button" className="btn btn-dark saveBookBtn" {... props} onClick={() => props.handleAddtoSaved(props)}>
+          <AddButton type="button" className="saveBookBtn" {... props} onClick={() => props.handleAddtoSaved(props)}>
             Save Book
           </AddButton>
+
+
         </div>
       </div>
     </li>

@@ -3,10 +3,10 @@ import axios from "axios";
 import "./style.css";
 
 
-
-class AddButton extends React.Component{
+// TODO excute removal from DB via Book Id
+class DeleteButton extends React.Component{
  
-    postToDB = (book) => {
+    deletfromDB = (book) => {
         
       var dbBook = {
           title: book.title,
@@ -18,7 +18,7 @@ class AddButton extends React.Component{
         }
     
         axios.post("/api/books", dbBook)
-        .then( () => console.log("Biij reakky Added!"))
+        .then( () => console.log("Book deleted"))
         .catch(err => console.log(err))
       }
 
@@ -28,13 +28,13 @@ class AddButton extends React.Component{
           <button className="btn btn-secondary " type="primary" onClick={() => 
             {this.postToDB(this.props)}
             }>
-            Save Book
+            Remove Book
         </button>
         </div>
         );
     }
   }
-export default AddButton;
+export default DeleteButton;
 
 
   

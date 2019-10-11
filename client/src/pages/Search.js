@@ -12,12 +12,12 @@ class Search extends Component {
   // Initialize this.state.books as an empty array
   state = {
     books: [],
-    bookSearch: ""
+    bookSearch: "In your Library"
   };
 
   // Add code here to get all books from the database and save them to this.state.books
   componentDidMount() {
-    // this.getbooks();
+    this.getbooks();
     // this.getGoogleBooks();
   }
 
@@ -29,25 +29,11 @@ class Search extends Component {
     API.saveBook(id).then(console.log("Boook added written to the DB"));
   };
 
-  // ? is this needed
-  getGoogleBooks = searchTerm => {
-    // this.setState({ searchTerm: searchTerm});
-    API.getGoogleBooks(searchTerm)
-      .then(data => this.setState({ books: data }))
-      .catch(err => console.log(err));
-    // .then(console.log(searchTerm));
-  };
-
   handleFind = event => {
     event.preventDefault();
     API.getGoogleBooks(this.state.bookSearch)
       .then(data => this.setState({ books: data }))
       .catch(err => console.log(err));
-
-    // const term = event.target.Search.value;
-    // console.log(term);
-
-    // this.setState({ searchTerm: term });
   };
 
   handleInputChange = event => {
@@ -74,11 +60,11 @@ class Search extends Component {
                   placeholder="Help me find a book!"
                 />
 
-                <SearchBtn onClick={this.handleFind}>Submit Book</SearchBtn>
+                <SearchBtn onClick={this.handleFind}></SearchBtn>
               </form>
             </Jumbotron>
             <Col size="md-12 ">
-              <h2>Books found for {this.state.bookSearch}</h2>
+              <h2>Books: {this.state.bookSearch}</h2>
               {this.state.books.length ? (
                 <List>
                   {this.state.books.map(book => (
