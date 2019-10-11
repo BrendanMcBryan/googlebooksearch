@@ -17,7 +17,6 @@ class Books extends Component {
 
   // Add code here to get all books from the database and save them to this.state.books
   componentDidMount() {
-    // this.getbooks();
     this.getbooks();
   }
 
